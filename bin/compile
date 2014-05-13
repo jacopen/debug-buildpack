@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "Compiling buildpack... version=1"
