@@ -1,2 +1,10 @@
 #!/usr/bin/env bash
-echo "Nothing to do."
+version=$(dirname $BASH_SOURCE)/VERSION
+cat <<EOF
+---
+config_vars:
+  PATH: bin:/usr/local/bin:/usr/bin:/bin
+  FROM_BUILD_PACK: "yes"
+default_process_types:
+  web: while true; do { echo -e 'HTTP/1.1 200 OK\r\n'; echo "Hello from debug-buildpack. buildpack version is `cat ${version}`"; } | nc -l \$PORT; done
+EOF
